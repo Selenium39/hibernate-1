@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!--1.连接数据库的基本信息 -->
+		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_hibernate-1</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">15773272279wt..A</property>
+		<!--2.Hibernate框架配置:数据库使用的方言,开发过程中要在控制台显示出来sql -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<!-- 注意这里要MySQL5,不然mysql5以上版本报错 -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- 自动更新创建表结构 -->
+		<!--
+		  create：每次生成都会删除上一次生成的表
+		  create-drop:sessionFactory关闭后自动将表删除
+		  update：第一次加载时创建(前提是创建好数据库),第二次加载时不会删除表，更新表也会保留原有表数据
+		  validate：验证，不会删除表
+		  -->
+		<!--3.Hibernate映射关系 -->
+		<mapping resource="com/wantao/entity/Student.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
